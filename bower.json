@@ -1,0 +1,22 @@
+{
+  "name": "My test project",
+  "authors": [
+    "Anton Tibblin <tibbelit@gmail.com>"
+  ],
+  "description": "Just an example of graphs",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "chart.js": "^2.5.0",
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7"
+  }
+}

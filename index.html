@@ -20,8 +20,12 @@
 		
 		canvas{
 			margin: auto;
+			display: none;
 		}
 	
+		.jumbotron{
+			min-height: 700px;
+		}
 	
 	</style>
   </head>
@@ -29,6 +33,10 @@
 	<div class="jumbotron">
 		<h1>How cool is this? =)</h1>
 		<canvas id="myChart" width="400" height="400"></canvas>
+		<canvas id="myChart2" width="400" height="400"></canvas>
+		<hr>
+		<button class="btn" id="bar">Bar</button>
+		<button class="btn" id="line">Line</button>
 	</div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -37,13 +45,23 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="bower_components/chart.js/dist/Chart.min.js"></script>
 	<script>
+			$("#bar").on("click", function(){
+				$("canvas").fadeOut(500);
+				$("#myChart2").delay(500).fadeIn(500);
+			});
+			
+			$("#line").on("click", function(){
+				$("canvas").fadeOut(500);
+				$("#myChart").delay(500).fadeIn(500);
+			});
+	
 		var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
         labels: ["Really cool!", "Awesome!", "Nah"],
         datasets: [{
-            label: "Some data",
+            label: ["Some data", "More data"],
             data: [50, 90, 10],
             backgroundColor: [
                 'rgba(54, 162, 235, 0.2)',
@@ -59,6 +77,7 @@ var myChart = new Chart(ctx, {
         }]
     },
     options: {
+		label: {labels:{fontColor:"white", fontSize: 18}},
         scales: {
             yAxes: [{
                 ticks: {
@@ -69,6 +88,42 @@ var myChart = new Chart(ctx, {
 		responsive: false
     }
 });
+
+		var ctx = document.getElementById("myChart2");
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Really cool!", "Awesome!", "Nah"],
+        datasets: [{
+            label: ["Some data", "More data"],
+            data: [50, 90, 10],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+				'rgba(255, 99, 132, 0.2)',
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+				'rgba(255,99,132,1)',				
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+		label: {labels:{fontColor:"white", fontSize: 18}},
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        },
+		responsive: false
+    }
+});
+
+	$("#myChart").hide();
 	</script>
   </body>
 </html>
